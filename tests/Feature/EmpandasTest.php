@@ -61,11 +61,11 @@ class EmpandasTest extends TestCase
         $response->assertJsonCount(7); 
         $response->assertJsonStructure($estructura);
         $response->assertJsonFragment([
-            "id" => 1101,
-            "nombre" => "reiciendis",
-            "tipo" => "queso",
-            "precio" => 144,
-            "cantidad" => 22
+            "id" => 1001,
+            "nombre" => "ruperta",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
         ]); //el assertJsonFragment lo que hace es testear un solo registro, es por eso que en la seed creamos un solo registro de este tipo
     }
 
@@ -83,20 +83,20 @@ class EmpandasTest extends TestCase
         ];
 
         $response = $this->post('api/v1/empanada',[
-            'nombre' => 'PepaPig',
-            'tipo' => 'farlopaSana',  
-            'precio' => 20,
-            'cantidad' => 1
+            "nombre" => "ruperta",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
         ]);
 
         $response->assertStatus(201);
         $response->assertJsonCount(7);
         $response->assertJsonStructure($estructura);
         $response->assertJsonFragment([
-            'nombre' => 'PepaPig',
-            'tipo' => 'farlopaSana', 
-            'precio' => 20,
-            'cantidad' => 1
+            "nombre" => "ruperta",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
         ]);
 
         $this->assertDatabaseHas('empanadas',[
@@ -125,29 +125,29 @@ class EmpandasTest extends TestCase
             "updated_at"
         ];
 
-        $response = $this->put('/api/v1/empanada/1100', [
-            'nombre' => 'commodi',
-            'tipo' => 'pollo',
-            'precio' => 109,
-            'cantidad' => 15
+        $response = $this->put('/api/v1/empanada/1002', [
+            "nombre" => "ruperta2",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
         ]);
 
         $response->assertStatus(200);
         $response->assertJsonCount(7);
         $response->assertJsonStructure($estructura);
         $response->assertJsonFragment([
-            'nombre' => 'commodi',
-            'tipo' => 'pollo',
-            'precio' => 109,
-            'cantidad' => 15
+            "nombre" => "ruperta2",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
 
         ]);
         $this->assertDatabaseHas('empanadas', [
-            'id' => 1100,
-            'nombre' => 'commodi',
-            'tipo' => 'pollo',
-            'precio' => 109,
-            'cantidad' => 15
+            "id" => 1002,
+            "nombre" => "ruperta2",
+            "tipo" => "Se hace la seria pero sabe lo que quiere, no es boba",
+            "precio" => 1500,
+            "cantidad" => 1
 
 
         ]);
@@ -168,7 +168,7 @@ class EmpandasTest extends TestCase
            "Message" 
          ];
 
-        $response = $this->delete('/api/v1/empanada/1095');
+        $response = $this->delete('/api/v1/empanada/1003');
 
         $response->assertStatus(200);
         $response->assertJsonCount(1);
@@ -178,7 +178,7 @@ class EmpandasTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('empanadas', [
-            "id" => 1001
+            "id" => 1003
         ]);
 
  
