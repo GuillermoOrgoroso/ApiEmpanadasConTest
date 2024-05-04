@@ -56,7 +56,7 @@ class EmpandasTest extends TestCase
                 
         ];
 
-        $response = $this->get('api/v1/empanada/1101');
+        $response = $this->get('api/v1/empanada/1001');
         $response->assertStatus(200);
         $response->assertJsonCount(7); 
         $response->assertJsonStructure($estructura);
